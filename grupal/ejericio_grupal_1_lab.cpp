@@ -6,6 +6,8 @@ Autores:
 - Wander Bautista * 1128559
 - Henry Torres * 10951
 - Maria G. Florian * 1119634
+
+
 Fecha: 11/08/2025
 
 */
@@ -13,32 +15,25 @@ Fecha: 11/08/2025
 #include <algorithm> // find
 #include <cstdlib>   // agrega rand() y srand() para generar los numeros
 #include <ctime> // agrega time para asegurar que los numeros casi siempre sean aleatorios
-#include <iostream>
-#include <string>
+#include <iostream> 
 #include <vector> // trabajar con vectores
+#include <windows.h> // time sleep
 
 using namespace std;
 
 int main() {
-  srand(time(0));
+  srand(time(0)); // genera la semilla del rand en base a la hora en la que se corre el programa, esto asegura que los numeros se generen de manera aleatoria cada vez que se corre el codigo
   int signal = 1;
   int empieza_juego = 0;
   int respuesta_usuario;
 
   vector<int> lista_inicial;   // aqui se almacenan los 4 numeros iniciales
   vector<int> valores_usuario; // almacena los valores del usuario en el momento
-  vector<char> lista_pistas;
-  // vector<vector<char> almacen_pistas;
+  vector<char> lista_pistas; //  vector para las pistas
 
-  // generar una lista de 4 numeros aleatoria de numeros de 1 al 6
-  int min = 1, max = 6;
-  for (int i = 0; i < 4; i++) {
-    int numero = (rand() % (max - min + 1)) + min;
-    lista_inicial.push_back(numero);
-  }
-
+// inicio del programa, con un switch
   while (signal == 1) {
-    for (int i = 0; i < 40; i++)
+    for (int i = 0; i < 40; i++)// genera una linea de 40 caracteres con -, para que se vea mejor basicamente
       cout << "-";
     cout << endl;
     cout << "Bienvenido a Masterminds" << endl;
@@ -53,7 +48,8 @@ int main() {
 
     switch (respuesta_usuario) {
     case 1:
-      cout << "Empieza el juego" << endl;
+      cout << "Iniciando juego..." << endl;
+      Sleep(4000);
       for (int i = 0; i < 40; i++)
         cout << "-";
       empieza_juego = 1;
@@ -84,13 +80,22 @@ int main() {
   }
 
   while (empieza_juego == 1) {
+
+    // generar una lista de 4 numeros aleatoria de numeros de 1 al 6
+    int min = 1, max = 6;
+      for (int i = 0; i < 4; i++) {
+        int numero = (rand() % (max - min + 1)) + min;
+        lista_inicial.push_back(numero);
+      }
+
     int intentos = 8; // cantidad de intentos
     while (intentos !=
            0) { // mientras los intentos no lle guen a 0 se puede repetir
       valores_usuario.clear();
       lista_pistas.clear();
+      cout << endl;
+      cout << "Ingresa un numero del 1 al 6: (separados por espacios)" << endl;
       while (valores_usuario.size() < 4) { // almacena 4 numeros en el vector
-        cout << "Ingresa un número del 1 al 6: (separados por espacios) ";
         int num;
         while (true) {
           if (cin >> num) {
@@ -98,14 +103,13 @@ int main() {
               valores_usuario.push_back(num);
               break;
             } else {
-              cout << "Número fuera de rango. Intenta de nuevo: ";
+              cout << "Numero fuera de rango. Intenta de nuevo: ";
             }
           } else {
-            cout << "Entrada inválida. Ingresa un número entero: ";
+            cout << "Entrada invalida. Ingresa un numero entero: ";
             cin.clear(); // limpia cin
             cin.ignore(
-                numeric_limits<streamsize>::max(),
-                '\n'); // ignora el valor maxmimo que puede tener el timpo
+                numeric_limits<streamsize>::max(), '\n'); // ignora el valor maxmimo que puede tener el timpo
                        // streamsize, el segundo indica el delimitador
           }
         }
@@ -152,7 +156,8 @@ int main() {
       }
 
       if (gano) {
-        cout << "¡Felicidades! Adivinaste el código secreto." << endl;
+        cout << "Felicidades! Adivinaste el codigo secreto." << endl;
+        cout << "Puntuacion: " << intentos << endl;
         empieza_juego = 0;
         break; // sale del juego
       }
@@ -161,7 +166,7 @@ int main() {
       cout << "Intentos restantes: " << intentos << endl;
 
       if (intentos == 0) {
-        cout << "Se acabaron los intentos. El código era: ";
+        cout << "Se acabaron los intentos. El codigo era: ";
         for (int val : lista_inicial)
           cout << val << " ";
         cout << endl;
