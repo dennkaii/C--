@@ -1,3 +1,9 @@
+/* 
+Enunciado: Las flores de salvador
+Autor: Edward Perez - 1123238
+Fecha: 8/8/2025
+*/
+
 #include <iostream>
 #include <bits/stdc++.h>
 

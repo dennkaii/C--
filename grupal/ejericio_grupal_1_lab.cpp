@@ -1,12 +1,13 @@
 /*
 Enunciado: Crear el juego masterMind en beginners escrito en C++
 
-Autores: 
+Autores:
 - Edward Perez * 1123238
 - Wander Bautista * 1128559
-- Henry Torres * 10951 
-- 
-Fecha: T
+- Henry Torres * 10951
+- Maria G. Florian * 1119634
+Fecha: 11/08/2025
+
 */
 
 #include <algorithm> // find
@@ -14,8 +15,7 @@ Fecha: T
 #include <ctime> // agrega time para asegurar que los numeros casi siempre sean aleatorios
 #include <iostream>
 #include <string>
-#include <vector> // trabajar con listas
-
+#include <vector> // trabajar con vectores
 
 using namespace std;
 
@@ -85,14 +85,15 @@ int main() {
 
   while (empieza_juego == 1) {
     int intentos = 8; // cantidad de intentos
-    while (intentos !=0) { // mientras los intentos no lle guen a 0 se puede repetir
+    while (intentos !=
+           0) { // mientras los intentos no lle guen a 0 se puede repetir
       valores_usuario.clear();
       lista_pistas.clear();
       while (valores_usuario.size() < 4) { // almacena 4 numeros en el vector
         cout << "Ingresa un número del 1 al 6: (separados por espacios) ";
         int num;
         while (true) {
-          if (cin >> num) { 
+          if (cin >> num) {
             if (num >= 1 && num <= 6) {
               valores_usuario.push_back(num);
               break;
@@ -101,8 +102,11 @@ int main() {
             }
           } else {
             cout << "Entrada inválida. Ingresa un número entero: ";
-            cin.clear();// limpia cin
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');// ignora el valor maxmimo que puede tener el timpo streamsize, el segundo indica el delimitador
+            cin.clear(); // limpia cin
+            cin.ignore(
+                numeric_limits<streamsize>::max(),
+                '\n'); // ignora el valor maxmimo que puede tener el timpo
+                       // streamsize, el segundo indica el delimitador
           }
         }
       }

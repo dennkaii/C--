@@ -4,7 +4,6 @@ Autor: Edward Perez - 1123238
 Fecha: 8/8/2025
 */
 
-
 #include <iostream>
 #include <list>
 
