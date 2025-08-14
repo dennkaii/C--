@@ -74,10 +74,26 @@ int main() {
     while (empieza_juego == 1) {
         int min = 1, max = 6;
         for (int i = 0; i < 4; i++) {
-            lista_inicial[i] = (rand() % (max - min + 1)) + min;// 
+        int nuevo_numero;
+        bool repetido;
+        do {
+            repetido = false;
+            nuevo_numero = (rand() % (max - min + 1)) + min;
+
+            // Revisar si ya existe en el array
+            for (int j = 0; j < i; j++) {
+                if (lista_inicial[j] == nuevo_numero) {
+                    repetido = true;
+                    break;
+                }
+            }
+        } while (repetido); // Si está repetido, vuelve a generar
+
+        lista_inicial[i] = nuevo_numero;
+
         }
 
-        int intentos = 8;
+        int intentos = 10; // cantidad de intentos 
         while (intentos != 0) {
          fill(begin(valores_usuario), end(valores_usuario), 0); // agrega unos valores por defecto de 0 0 0 0 al array
          fill(begin(lista_pistas), end(lista_pistas), ' ');  // agrega ' ' al array 
