@@ -28,14 +28,15 @@ int main() {
     int empieza_juego = 0;
     int respuesta_usuario; 
 
-    int lista_inicial[4];
-    int valores_usuario[4];
-    char lista_pistas[4]; 
+    int lista_inicial[4];//Guarda el código secreto (4 números aleatorios entre 1 y 6).
+    int valores_usuario[4];//Almacena los números que ingresa el jugador en cada intento.
+    char lista_pistas[4]; // Guarda las pistas ('C', 'F', 'X') para cada intento.
 
     while (signal == 1) {
         for (int i = 0; i < 40; i++) cout << "-"; // genera una fila de 40 "-".
         cout << endl;
         cout << "Bienvenido a Masterminds" << endl;
+        cout << "El juego consiste en adivinar la clave oculta a partir de las pistas proporcionadas: \n C: El valor fue encontrado y esta en la posicion correcta \n F: El valor se encuentra en la clave pero no en la posicion correcta\n X: El valor no se encuentra en la clave." << endl;
         cout << "Niveles de dificultad disponibles:" << endl;
         cout << "1.Beginners\n2.Intermediate\n3.Advanced\n4.Salir" << endl;
         cout << "Ingresa el nivel de dificultad: \n";
