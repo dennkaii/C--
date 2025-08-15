@@ -4,9 +4,10 @@ Enunciado: Crear el juego masterMind en beginners escrito en C++
 Autores:
 - Edward Perez * 1123238
 - Wander Bautista * 1128559
-- Henry Torres * 10951
+- Henry Torres * 1095100
 - Maria G. Florian * 1119634
 - Juan A. Reyes *  1126017
+- Suri Lara * 1128060
 
 Fecha: 11/08/2025
 

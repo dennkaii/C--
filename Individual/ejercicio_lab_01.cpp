@@ -1,7 +1,7 @@
 /* 
 Enunciado: Las flores de salvador
 Autor: Edward Perez - 1123238
-Fecha: 8/8/2025
+Fecha: 10/8/2025
 */
 
 #include <iostream>
@@ -9,8 +9,7 @@ Fecha: 8/8/2025
 
 using namespace std;
 
-int main() {
-    //cantidad de floreros
+int main()   reros
     int floreros = 100;
     // lista llamada results
     list<int> results;
