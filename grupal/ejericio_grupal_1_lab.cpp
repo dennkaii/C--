@@ -24,7 +24,7 @@ using namespace std;
 using namespace std;
 
 int main() {
-    srand(time(0));// Genera una semilla que sera utlizada por rand() utilizando la hora actual asegurando asi que casi siempre los numeros sean diferentes.
+    srand(time(0));//  Genera una semilla que sera utlizada por rand() utilizando la hora actual asegurando asi que casi siempre los numeros sean diferentes.
     int signal = 1; 
     int empieza_juego = 0;
     int respuesta_usuario; 
@@ -73,7 +73,7 @@ int main() {
         }
     }
 
-    while (empieza_juego == 1) {
+                    while (empieza_juego == 1) {
         int min = 1, max = 6;
         for (int i = 0; i < 4; i++) {
         int nuevo_numero;
