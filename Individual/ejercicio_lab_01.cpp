@@ -9,7 +9,7 @@ Fecha: 10/8/2025
 
 using namespace std;
 
-int main()   reros
+int main() { 
     int floreros = 100;
     // lista llamada results
     list<int> results;
