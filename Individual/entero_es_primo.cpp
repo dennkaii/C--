@@ -2,7 +2,7 @@
 #include <cmath>
 using namespace std;
 
-int es_primo(int n) {
+bool es_primo(int n) {
     if (n <= 1) return 0; // Números menores o iguales a 1 no son primos
     int copia = n;
     int raiz = sqrt(n);
