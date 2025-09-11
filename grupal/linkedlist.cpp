@@ -45,48 +45,21 @@ bool is_empty(const linkedList& list) {//revisa si la lista esta vacia
 }
 
 void insert(linkedList& list, int dato) {
-    if (is_empty(list)){
-        list.front = new Nodo(dato,nullptr);
-        cout << "La lista estaba vacia. Insertando " << dato << " al inicio" << endl;
+    Nodo* newNode = new Nodo(dato);
+    if (is_empty(list) || dato < list.front->dato) {
+        newNode->next = list.front;
+        list.front = newNode;
+        cout << "Insertando " << dato << " al inicio" << endl;
         return;
     }
 
-    int posicion;
-    cout << "Ingregar la posicion  para insertar " << dato << ": ";
-    if (!(cin >> posicion)) {
-        cout << "Error: Entrada no valida. Por favor, ingresa un numero entero." << endl;
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        return;
+    Nodo* current = list.front;
+    while (current->next != nullptr && current->next->dato < dato) {
+        current = current->next;
     }
-
-    if (posicion <= 0){
-        list.front = new Nodo(dato, list.front);
-        cout << "insertando " << dato << " en la posicion 0" << endl;
-        return;
-    }
-
-    Nodo* aux = list.front; 
-    int Posicion_actual = 0;
-
-    while(aux != nullptr && Posicion_actual < posicion - 1){
-        aux = aux->next;
-        Posicion_actual++;
-    }
-
-    if (aux == nullptr){
-        cout << "No es posible insertar " << dato << " en la posicion " << posicion << endl;
-        cout << "insertando " << dato << " al final de la lista" << endl;
-        aux = list.front;
-        while(aux->next != nullptr){
-            aux = aux->next;
-        }
-        aux->next = new Nodo(dato,nullptr);
-    }
-    else {
-        aux->next = new Nodo(dato,aux->next);
-        cout << "Insertando " << dato << " en la posicion" << posicion << "."<< endl;
-    }
+    newNode->next = current->next;
+    current->next = newNode;
+    cout << "Insertando " << dato << " en orden ascendente" << endl;
 }
 
 void buscar_valor(const linkedList& list) {
@@ -163,7 +136,7 @@ void mostrar(const linkedList& list) {
     cout << "Contenido de la lista: ";
     Nodo* aux = list.front;
     while (aux != nullptr) {
-        cout << aux->dato << "->";
+        cout << aux->dato << " -> ";
         aux = aux->next;
     }
     cout << endl;
@@ -171,14 +144,14 @@ void mostrar(const linkedList& list) {
 
 void eliminar(linkedList& list) {
     if (is_empty(list)) {
-        cout << "La lista está vacia. No hay valores para eliminar." << endl;
+        cout << "La lista esta vacia. No hay valores para eliminar." << endl;
         return;
     }
 
     int posicion;
     cout << "Ingresa la posicion para eliminar: ";
     if (!(cin >> posicion)) {
-        cout << "Error: Entrada no valida. Por favor, ingresa un número entero." << endl;
+        cout << "Error: Entrada no valida. Por favor, ingresa un numero entero." << endl;
         cin.clear();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         return;
@@ -206,13 +179,13 @@ void eliminar(linkedList& list) {
     }
 
     if (actual == nullptr || actual->next == nullptr) {
-        cout << "Error: La posición " << posicion << " está fuera de los límites de la lista." << endl;
+        cout << "Error: La posicion " << posicion << " esta fuera de los limites de la lista." << endl;
         return;
     }
 
     Nodo* temporal = actual->next;
     actual->next = temporal->next;
-    cout << "Eliminado el valor " << temporal->dato << " en la posición " << posicion << "." << endl;
+    cout << "Eliminado el valor " << temporal->dato << " en la posicion " << posicion << "." << endl;
     delete temporal;
 }
 
